@@ -1,0 +1,262 @@
+Python 3.6.0 (default, Dec 24 2016, 08:01:42) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> WARNING: The version of Tcl/Tk (8.5.9) in use may be unstable.
+Visit http://www.python.org/download/mac/tcltk/ for current information.
+
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+
+Warning (from warnings module):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 17
+    self.assert_(m is not None)
+DeprecationWarning: Please use assertTrue instead.
+..F
+======================================================================
+FAIL: test_predict (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 22, in test_predict
+    self.assertEqual(res, ' ')
+AssertionError: 'r' != ' '
+- r
++  
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.042s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+
+Warning (from warnings module):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 17
+    self.assert_(m is not None)
+DeprecationWarning: Please use assertTrue instead.
+..F
+======================================================================
+FAIL: test_predict (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 22, in test_predict
+    self.assertEqual(res, 'r')
+AssertionError: ' ' != 'r'
+-  
++ r
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.098s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+
+Warning (from warnings module):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 17
+    self.assert_(m is not None)
+DeprecationWarning: Please use assertTrue instead.
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.113s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+..F
+======================================================================
+FAIL: test_predict (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 22, in test_predict
+    self.assertEqual(res, ' ')
+AssertionError: 'r' != ' '
+- r
++  
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.063s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.049s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.053s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.046s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.082s
+
+OK
+>>> dir()
+['TestMarkov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'markov', 'unittest']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder', 'doctest', 'get_table', 'random']
+>>> m = Markov('find a city, find yourself a city to live in')
+>>> m.table
+{'f': {'i': 2, ' ': 1}, 'i': {'n': 3, 't': 2, 'v': 1}, 'n': {'d': 2}, 'd': {' ': 2}, ' ': {'a': 2, 'c': 2, 'f': 1, 'y': 1, 't': 1, 'l': 1, 'i': 1}, 'a': {' ': 2}, 'c': {'i': 2}, 't': {'y': 2, 'o': 1}, 'y': {',': 1, 'o': 1, ' ': 1}, ',': {' ': 1}, 'o': {'u': 1, ' ': 1}, 'u': {'r': 1}, 'r': {'s': 1}, 's': {'e': 1}, 'e': {'l': 1, ' ': 1}, 'l': {'f': 1, 'i': 1}, 'v': {'e': 1}}
+>>> m.predict('c')
+'i'
+>>> m.predict('i')
+'t'
+>>> m.predict('t')
+'o'
+>>> __builtins__
+<module 'builtins' (built-in)>
+>>> dir(__builtins__)
+['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'BlockingIOError', 'BrokenPipeError', 'BufferError', 'BytesWarning', 'ChildProcessError', 'ConnectionAbortedError', 'ConnectionError', 'ConnectionRefusedError', 'ConnectionResetError', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False', 'FileExistsError', 'FileNotFoundError', 'FloatingPointError', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexError', 'InterruptedError', 'IsADirectoryError', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'ModuleNotFoundError', 'NameError', 'None', 'NotADirectoryError', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'PermissionError', 'ProcessLookupError', 'RecursionError', 'ReferenceError', 'ResourceWarning', 'RuntimeError', 'RuntimeWarning', 'StopAsyncIteration', 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'TimeoutError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning', 'ZeroDivisionError', '_', '__build_class__', '__debug__', '__doc__', '__import__', '__loader__', '__name__', '__package__', '__spec__', 'abs', 'all', 'any', 'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'compile', 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memoryview', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
+>>> help(range)
+Help on class range in module builtins:
+
+class range(object)
+ |  range(stop) -> range object
+ |  range(start, stop[, step]) -> range object
+ |  
+ |  Return an object that produces a sequence of integers from start (inclusive)
+ |  to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
+ |  start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
+ |  These are exactly the valid indices for a list of 4 elements.
+ |  When step is given, it specifies the increment (or decrement).
+ |  
+ |  Methods defined here:
+ |  
+ |  __contains__(self, key, /)
+ |      Return key in self.
+ |  
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |  
+ |  __ge__(self, value, /)
+ |      Return self>=value.
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __getitem__(self, key, /)
+ |      Return self[key].
+ |  
+ |  __gt__(self, value, /)
+ |      Return self>value.
+ |  
+ |  __hash__(self, /)
+ |      Return hash(self).
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __le__(self, value, /)
+ |      Return self<=value.
+ |  
+ |  __len__(self, /)
+ |      Return len(self).
+ |  
+ |  __lt__(self, value, /)
+ |      Return self<value.
+ |  
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  __reduce__(...)
+ |      helper for pickle
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  __reversed__(...)
+ |      Return a reverse iterator.
+ |  
+ |  count(...)
+ |      rangeobject.count(value) -> integer -- return number of occurrences of value
+ |  
+ |  index(...)
+ |      rangeobject.index(value, [start, [stop]]) -> integer -- return index of value.
+ |      Raise ValueError if the value is not present.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  start
+ |  
+ |  step
+ |  
+ |  stop
+
+>>> dir(__builtins__)
+['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'BlockingIOError', 'BrokenPipeError', 'BufferError', 'BytesWarning', 'ChildProcessError', 'ConnectionAbortedError', 'ConnectionError', 'ConnectionRefusedError', 'ConnectionResetError', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False', 'FileExistsError', 'FileNotFoundError', 'FloatingPointError', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexError', 'InterruptedError', 'IsADirectoryError', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'ModuleNotFoundError', 'NameError', 'None', 'NotADirectoryError', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'PermissionError', 'ProcessLookupError', 'RecursionError', 'ReferenceError', 'ResourceWarning', 'RuntimeError', 'RuntimeWarning', 'StopAsyncIteration', 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'TimeoutError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning', 'ZeroDivisionError', '_', '__build_class__', '__debug__', '__doc__', '__import__', '__loader__', '__name__', '__package__', '__spec__', 'abs', 'all', 'any', 'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'compile', 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memoryview', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
+>>> range = 'this is the range'
+>>> range(10)
+Traceback (most recent call last):
+  File "<pyshell#12>", line 1, in <module>
+    range(10)
+TypeError: 'str' object is not callable
+>>> del range
+>>> range(10)
+range(0, 10)
+>>> __builtins__.range(10)
+range(0, 10)
+>>> name = 'matt'
+>>> name[0]
+'m'
+>>> name[3]
+'t'
+>>> # half open interval
+>>> # include first index, up to but not including last index
+>>> 
+>>> list(range(10)
+
+     )
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> list(range(2,6))
+[2, 3, 4, 5]
+>>> list(range(2,6)) + list(range(6, 10))
+[2, 3, 4, 5, 6, 7, 8, 9]
+>>> name = 'matt'
+>>> name
+'matt'
+>>> type(name)
+<class 'str'>
+>>> dir(name)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> help(name.join)
+Help on built-in function join:
+
+join(...) method of builtins.str instance
+    S.join(iterable) -> str
+    
+    Return a string which is the concatenation of the strings in the
+    iterable.  The separator between elements is S.
+
+>>> res = list('matt')
+>>> res
+['m', 'a', 't', 't']
+>>> ''.join(res)
+'matt'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> test_predict(m, 20, 'c')
+'civelind y yo a a a l'
+>>> 

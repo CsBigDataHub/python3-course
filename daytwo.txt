@@ -1,0 +1,1589 @@
+Python 3.6.0 (default, Dec 24 2016, 08:01:42) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> WARNING: The version of Tcl/Tk (8.5.9) in use may be unstable.
+Visit http://www.python.org/download/mac/tcltk/ for current information.
+
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder', 'doctest', 'get_table', 'm', 'random', 'test_predict']
+>>> m
+<__main__.Markov object at 0x105d38358>
+>>> test_predict(m, 10, 'a')
+'a ind a a f'
+>>> test_predict(m, 10, 'i')
+'ind find a '
+>>> test_predict(m, 10, 'f')
+'find y f a '
+>>> 
+>>> def add(x, y=5):
+	return x + y
+
+>>> add(2, 3)
+5
+>>> add(7)
+12
+>>> range(5)
+range(0, 5)
+>>> list(range(5))
+[0, 1, 2, 3, 4]
+>>> range(1)
+range(0, 1)
+>>> list(range(1))
+[0]
+>>> list(range(2, 6))
+[2, 3, 4, 5]
+>>> name = 'report.doc'
+>>> name[0]
+'r'
+>>> name[0:2]
+'re'
+>>> name[:2]
+'re'
+>>> name[:]
+'report.doc'
+>>> name[2:]
+'port.doc'
+>>> name[-1]
+'c'
+>>> name[-3:]
+'doc'
+>>> name[:-4]
+'report'
+>>> names = ['paul', 'john', 'george']
+>>> names[0]
+'paul'
+>>> names[0:2]
+['paul', 'john']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 8, in __main__
+Failed example:
+    m.predict('a')    # call a method
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest __main__[1]>", line 1, in <module>
+        m.predict('a')    # call a method
+      File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 69, in predict
+        options = self.table.get(data_in, {})
+    AttributeError: 'Markov' object has no attribute 'table'
+**********************************************************************
+1 items had failures:
+   1 of   3 in __main__
+***Test Failed*** 1 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> m
+<__main__.Markov object at 0x106322390>
+>>> len(m.tables)
+4
+>>> m.tables[-1]
+{'find': {' ': 2}, 'ind ': {'a': 1, 'y': 1}, 'nd a': {' ': 1}, 'd a ': {'c': 1}, ' a c': {'i': 2}, 'a ci': {'t': 2}, ' cit': {'y': 2}, 'city': {',': 1, ' ': 1}, 'ity,': {' ': 1}, 'ty, ': {'f': 1}, 'y, f': {'i': 1}, ', fi': {'n': 1}, ' fin': {'d': 1}, 'nd y': {'o': 1}, 'd yo': {'u': 1}, ' you': {'r': 1}, 'your': {'s': 1}, 'ours': {'e': 1}, 'urse': {'l': 1}, 'rsel': {'f': 1}, 'self': {' ': 1}, 'elf ': {'a': 1}, 'lf a': {' ': 1}, 'f a ': {'c': 1}, 'ity ': {'t': 1}, 'ty t': {'o': 1}, 'y to': {' ': 1}, ' to ': {'l': 1}, 'to l': {'i': 1}, 'o li': {'v': 1}, ' liv': {'e': 1}, 'live': {' ': 1}, 'ive ': {'i': 1}, 've i': {'n': 1}}
+>>> test_predict(m, 20, 'find')
+'find cityo f a tyo ito f'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> test_predict(m, 20, 'find')
+'find tyourselfito ind fi'
+>>> test_predict(m, 20, 'find', 4)
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    test_predict(m, 20, 'find', 4)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 82, in test_predict
+    let = m.predict(start)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 69, in predict
+    table = self.tables[len(data_in)-1]
+IndexError: list index out of range
+>>> test_predict(m, 20, 'find', 3)
+Traceback (most recent call last):
+  File "<pyshell#34>", line 1, in <module>
+    test_predict(m, 20, 'find', 3)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 82, in test_predict
+    let = m.predict(start)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 69, in predict
+    table = self.tables[len(data_in)-1]
+IndexError: list index out of range
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 8, in __main__
+Failed example:
+    m.predict('a')    # call a method
+Expected:
+    'b'
+Got:
+    DATAIN a
+    'b'
+**********************************************************************
+1 items had failures:
+   1 of   3 in __main__
+***Test Failed*** 1 failures.
+>>> test_predict(m, 20, 'find', 3)
+DATAIN find
+DATAIN find 
+Traceback (most recent call last):
+  File "<pyshell#35>", line 1, in <module>
+    test_predict(m, 20, 'find', 3)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 83, in test_predict
+    let = m.predict(start)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 70, in predict
+    table = self.tables[len(data_in)-1]
+IndexError: list index out of range
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 8, in __main__
+Failed example:
+    m.predict('a')    # call a method
+Expected:
+    'b'
+Got:
+    DATAIN a
+    'b'
+**********************************************************************
+1 items had failures:
+   1 of   3 in __main__
+***Test Failed*** 1 failures.
+>>> test_predict(m, 20, 'find', 3)
+DATAIN find
+Traceback (most recent call last):
+  File "<pyshell#36>", line 1, in <module>
+    test_predict(m, 20, 'find', 3)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 86, in test_predict
+    let = m.predict(start)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 71, in predict
+    data_in = data_in[-size:]
+NameError: name 'size' is not defined
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 8, in __main__
+Failed example:
+    m.predict('a')    # call a method
+Expected:
+    'b'
+Got:
+    DATAIN a
+    'b'
+**********************************************************************
+1 items had failures:
+   1 of   3 in __main__
+***Test Failed*** 1 failures.
+>>> test_predict(m, 20, 'find', 3)
+DATAIN find
+DATAIN ind 
+DATAIN nd a
+DATAIN  a 
+DATAIN a c
+DATAIN  ci
+DATAIN cit
+DATAIN ity
+DATAIN ty,
+DATAIN y, 
+DATAIN , f
+DATAIN  fi
+DATAIN fin
+DATAIN ind
+DATAIN nd 
+DATAIN d a
+DATAIN  a 
+DATAIN a c
+DATAIN  ci
+DATAIN cit
+'find a city, find a city'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.054s
+
+OK
+>>> '\N{GRINNING FACE}'
+'\U0001f600'
+>>> '\U0001f600'
+'\U0001f600'
+>>> print('\U0001f600')
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    print('\U0001f600')
+UnicodeEncodeError: 'UCS-2' codec can't encode character '\U0001f600' in position 0: Non-BMP character not supported in Tk
+>>> 'Ā'
+'Ā'
+>>> val = _
+>>> val
+'Ā'
+>>> dir(val)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> val.encode('ASCII')
+Traceback (most recent call last):
+  File "<pyshell#45>", line 1, in <module>
+    val.encode('ASCII')
+UnicodeEncodeError: 'ascii' codec can't encode character '\u0100' in position 0: ordinal not in range(128)
+>>> val
+'Ā'
+>>> val.encode('utf8')
+b'\xc4\x80'
+>>> enc = _
+>>> enc
+b'\xc4\x80'
+>>> type(enc)
+<class 'bytes'>
+>>> enc.decode('utf8')
+'Ā'
+>>> enc.decode('ascii')
+Traceback (most recent call last):
+  File "<pyshell#52>", line 1, in <module>
+    enc.decode('ascii')
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc4 in position 0: ordinal not in range(128)
+>>> import urllib.request as req
+>>> fin = req.urlopen('https://www.gutenberg.org/ebooks/74')
+>>> fin
+<http.client.HTTPResponse object at 0x10697bdd8>
+>>> dir(fin)
+['__abstractmethods__', '__class__', '__del__', '__delattr__', '__dict__', '__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_abc_cache', '_abc_negative_cache', '_abc_negative_cache_version', '_abc_registry', '_checkClosed', '_checkReadable', '_checkSeekable', '_checkWritable', '_check_close', '_close_conn', '_get_chunk_left', '_method', '_peek_chunked', '_read1_chunked', '_read_and_discard_trailer', '_read_next_chunk_size', '_read_status', '_readall_chunked', '_readinto_chunked', '_safe_read', '_safe_readinto', 'begin', 'chunk_left', 'chunked', 'close', 'closed', 'code', 'debuglevel', 'detach', 'fileno', 'flush', 'fp', 'getcode', 'getheader', 'getheaders', 'geturl', 'headers', 'info', 'isatty', 'isclosed', 'length', 'msg', 'peek', 'read', 'read1', 'readable', 'readinto', 'readinto1', 'readline', 'readlines', 'reason', 'seek', 'seekable', 'status', 'tell', 'truncate', 'url', 'version', 'will_close', 'writable', 'write', 'writelines']
+>>> data = fin.read()
+>>> len(data)
+22815
+>>> data[:10]
+b'<!DOCTYPE '
+>>> data[:100]
+b'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dt'
+>>> data[:1000]
+b'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">\n<!--\n\nDON\'T USE THIS PAGE FOR SCRAPING.\n\nSeriously. You\'ll only get your IP blocked.\n\nRead http://www.gutenberg.org/feeds/ to learn how to download Project\nGutenberg metadata much faster than by scraping.\n\n--><html xmlns="http://www.w3.org/1999/xhtml" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ebook="http://www.gutenberg.org/ebooks/" xmlns:marcrel="http://www.loc.gov/loc.terms/relators/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" lang="en_US" xml:lang="en_US" version="XHTML+RDFa 1.0">\n\n\n\n\n<head xmlns:og="http://opengraphprotocol.org/schema/" profile="http://a9.com/-/spec/opensearch/1.1/">\n<style type="text/css">\n.icon   { background: transparent url(/pics/sprite.png?1508992709) 0 0 no-repeat; }\n</style>\n<link rel="stylesheet" type="text/css" href="/css/pg-desktop-one.css?1508992709" />\n<script type="text/javascript">//<!'
+>>> data[1000:2000]
+b'[CDATA[\nvar json_search     = "/ebooks/suggest/";\nvar mobile_url      = "//m.gutenberg.org/ebooks/74.mobile";\nvar canonical_url   = "http://www.gutenberg.org/ebooks/74";\nvar lang            = "en_US";\nvar fb_lang         = "en_US"; /* FB accepts only xx_XX */\nvar msg_load_more   = "Load More Results\xe2\x80\xa6";\nvar page_mode       = "screen";\nvar dialog_title    = "";\nvar dialog_message  = "";\n//]]></script>\n<script type="text/javascript" src="/js/pg-desktop-one.js?1508992709"></script>\n<link rel="shortcut icon" href="/pics/favicon" />\n<link rel="canonical" href="http://www.gutenberg.org/ebooks/74" />\n<link rel="search" type="application/opensearchdescription+xml" title="Search Project Gutenberg" href="//www.gutenberg.org/catalog/osd-books.xml" />\n<link rel="alternate nofollow" type="application/atom+xml;profile=opds-catalog" title="OPDS feed" href="/ebooks/74.opds" />\n<link rel="apple-touch-icon" href="/pics/apple-touch-icon" />\n<meta name="viewport" content="width=device-width" />\n<meta htt'
+>>> data[-1000:]
+b'ass="helpbox">\n<tr>\n<th>this query</th>\n<th>finds</th>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">shakespeare hamlet</td>\n<td>"Hamlet" by Shakespeare</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">qui.</td>\n<td>"qui", not "Quixote"</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">love stories</td>\n<td>love stories</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">a.shakespeare</td>\n<td>by Shakespeare</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">s.shakespeare</td>\n<td>about Shakespeare</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">#74</td>\n<td>ebook no. 74</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">juvenile l.german</td>\n<td>juvenile lit in German</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">verne ( l.fr | l.it )</td>\n<td>by Verne in French or Italian</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">love stories ! austen</td>\n<td>love stories not by Austen</td>\n</tr>\n<tr>\n<td lang="en" xml:lang="en">jane austen cat.audio</td>\n<td>audio books by Jane Austen</td>\n</tr>\n</table>\n</div>\n</div>\n</div>\n</body>\n</html>'
+>>> with open('/tmp/foo.txt', 'w') as fout:
+	fout.write(data)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#66>", line 2, in <module>
+    fout.write(data)
+TypeError: write() argument must be str, not bytes
+>>> with open('/tmp/foo.txt', 'wb') as fout:
+	fout.write(data)
+
+	
+22815
+>>> with open('/tmp/foo.html', 'wb') as fout:
+	fout.write(data)
+
+	
+22815
+>>> fin = req.urlopen('https://www.gutenberg.org/files/74/74-0.txt')
+>>> data = fin.read()
+>>> len(data)
+433025
+>>> data[:1000]
+b'\xef\xbb\xbf\r\nThe Project Gutenberg EBook of The Adventures of Tom Sawyer, Complete by\r\nMark Twain (Samuel Clemens)\r\n\r\nThis eBook is for the use of anyone anywhere at no cost and with almost\r\nno restrictions whatsoever. You may copy it, give it away or re-use\r\nit under the terms of the Project Gutenberg License included with this\r\neBook or online at www.gutenberg.net\r\n\r\nTitle: The Adventures of Tom Sawyer, Complete\r\n\r\nAuthor: Mark Twain (Samuel Clemens)\r\n\r\nRelease Date: August 20, 2006 [EBook #74]\r\nLast updated: June 1, 2017\r\n\r\nLanguage: English\r\n\r\nCharacter set encoding: UTF-8\r\n\r\n*** START OF THIS PROJECT GUTENBERG EBOOK TOM SAWYER ***\r\n\r\nProduced by David Widger\r\n\r\n\r\n\r\n\r\n\r\nTHE ADVENTURES OF TOM SAWYER\r\n\r\nBy Mark Twain\r\n\r\n(Samuel Langhorne Clemens)\r\n\r\n\r\n\r\n\r\nCONTENTS\r\n\r\nCHAPTER I. Y-o-u-u Tom-Aunt Polly Decides Upon her Duty--Tom Practices\r\nMusic--The Challenge--A Private Entrance\r\n\r\nCHAPTER II. Strong Temptations--Strategic Movements--The Innocents\r\nBeguiled\r\n\r\nCHAPTER III. Tom as a General--T'
+>>> with open('ts.txt', 'wb', encoding='utf8') as fout:
+	fout.write(data)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#76>", line 1, in <module>
+    with open('ts.txt', 'wb', encoding='utf8') as fout:
+ValueError: binary mode doesn't take an encoding argument
+>>> with open('ts.txt', 'wb') as fout:
+	fout.write(data)
+
+	
+433025
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> test_predict(m, 100, 'The', size=4)
+'There, halting found), Mr. Water it was desire\nsaid them home rootsteps in sure in the was anguage.\n\n“T'
+>>> test_predict(m, 100, 'The', size=4)
+'They tale as only thing this presently under one time in keep of his time the said Tom being Project Gu'
+>>> test_predict(m, 100, 'The', size=4)
+'There not knifested evenile impulse he\nransfixed and oppresently searched to the boy, \xa0I wonder and let'
+>>> test_predict(m, 100, 'The', size=4)
+'The bleeged and ever that’s eyes. My the village languise, and distring at found it, and\nthe boys garre'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> url
+'https://www.gutenberg.org/files/74/74-0.txt'
+>>> fetch_url
+<function fetch_url at 0x10de849d8>
+>>> fetch_url(url, '/tmp/test.txt')
+>>> a = 'name'
+>>> b = 4
+>>> type(a)
+<class 'str'>
+>>> id(a)
+4479720336
+>>> type(b)
+<class 'int'>
+>>> id(b)
+4478782032
+>>> import random
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'a', 'adder', 'b', 'data', 'doctest', 'fetch_url', 'fin', 'get_table', 'm', 'random', 'test_predict', 'url']
+>>> random
+<module 'random' from '/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/random.py'>
+>>> type(random)
+<class 'module'>
+>>> id(random)
+4497526120
+>>> a
+'name'
+>>> c = a
+>>> c
+'name'
+>>> rand = random
+>>> rand
+<module 'random' from '/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/random.py'>
+>>> random.choice('matt']
+SyntaxError: invalid syntax
+>>> random.choice('matt')
+'t'
+>>> rand.choice('matt')
+'t'
+>>> (1, 2)
+(1, 2)
+>>> # variables are created during
+>>> # assignment
+>>> # importing
+>>> # def
+>>> # class
+>>> def sub(a, b):
+	return a - b
+
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'a', 'adder', 'b', 'c', 'data', 'doctest', 'fetch_url', 'fin', 'get_table', 'm', 'rand', 'random', 'sub', 'test_predict', 'url']
+>>> sub
+<function sub at 0x10de84a60>
+>>> foo = sub
+>>> foo(5, 6)
+-1
+>>> Markov
+<class '__main__.Markov'>
+>>> Farkov = Markov
+>>> f = Farkov('this is input data', size=5)
+>>> f
+<__main__.Markov object at 0x10f29a7b8>
+>>> f.predict('thi')
+'s'
+>>> f.predict('da')
+'t'
+>>> import random
+>>> dir(random)
+['BPF', 'LOG4', 'NV_MAGICCONST', 'RECIP_BPF', 'Random', 'SG_MAGICCONST', 'SystemRandom', 'TWOPI', '_BuiltinMethodType', '_MethodType', '_Sequence', '_Set', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_acos', '_bisect', '_ceil', '_cos', '_e', '_exp', '_inst', '_itertools', '_log', '_pi', '_random', '_sha512', '_sin', '_sqrt', '_test', '_test_generator', '_urandom', '_warn', 'betavariate', 'choice', 'choices', 'expovariate', 'gammavariate', 'gauss', 'getrandbits', 'getstate', 'lognormvariate', 'normalvariate', 'paretovariate', 'randint', 'random', 'randrange', 'sample', 'seed', 'setstate', 'shuffle', 'triangular', 'uniform', 'vonmisesvariate', 'weibullvariate']
+>>> random.__file__
+'/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/random.py'
+>>> import random
+>>> import foo
+Traceback (most recent call last):
+  File "<pyshell#128>", line 1, in <module>
+    import foo
+ModuleNotFoundError: No module named 'foo'
+>>> import sys
+>>> sys.path
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017', '/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python36.zip', '/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6', '/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/lib-dynload', '/Users/matt/Library/Python/3.6/lib/python/site-packages', '/usr/local/lib/python3.6/site-packages']
+>>> import testmarkov
+>>> import foo
+Traceback (most recent call last):
+  File "<pyshell#132>", line 1, in <module>
+    import foo
+ModuleNotFoundError: No module named 'foo'
+>>> sys.path.append('/tmp')
+>>> import foo
+>>> import math
+>>> dir(math)
+['__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc']
+>>> math
+<module 'math' from '/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/lib-dynload/math.cpython-36m-darwin.so'>
+>>> math.sin(0)
+0.0
+>>> from math import sin
+>>> sin
+<built-in function sin>
+>>> sin(0)
+0.0
+>>> from math import sin as s
+>>> s(0)
+0.0
+>>> def foo():
+	import pdb
+	pass
+
+>>> dir()
+['Farkov', 'Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'a', 'adder', 'b', 'c', 'data', 'doctest', 'f', 'fetch_url', 'fin', 'foo', 'get_table', 'm', 'math', 'rand', 'random', 's', 'sin', 'sub', 'sys', 'test_predict', 'testmarkov', 'url']
+>>> foo
+<function foo at 0x10f446378>
+>>> foo()
+>>> dir()
+['Farkov', 'Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'a', 'adder', 'b', 'c', 'data', 'doctest', 'f', 'fetch_url', 'fin', 'foo', 'get_table', 'm', 'math', 'rand', 'random', 's', 'sin', 'sub', 'sys', 'test_predict', 'testmarkov', 'url']
+>>> pdb
+Traceback (most recent call last):
+  File "<pyshell#152>", line 1, in <module>
+    pdb
+NameError: name 'pdb' is not defined
+>>> def add(x, y):
+	res = x + y
+	return res
+
+>>> add(3, 4)
+7
+>>> res
+Traceback (most recent call last):
+  File "<pyshell#158>", line 1, in <module>
+    res
+NameError: name 'res' is not defined
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> import this
+>>> this
+<module 'this' from '/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/this.py'>
+>>> import sys
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.041s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> m
+<__main__.Markov object at 0x1101b23c8>
+>>> repl(m)
+>The
+r
+>Ther
+e
+>here
+ 
+>here
+,
+>here
+.
+>here
+ 
+>here
+’
+>here
+ 
+>Tom
+?
+>Tom
+’
+>Tom
+ 
+>Tom
+,
+>Tom
+-
+>Tom
+,
+>Tom
+ 
+>Tom
+ 
+>Tom
+ 
+>Tom
+,
+>boat
+ 
+>boa
+t
+>boa
+r
+>boa
+t
+>boa
+r
+>
+Traceback (most recent call last):
+  File "<pyshell#164>", line 1, in <module>
+    repl(m)
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 99, in repl
+    txt = input('>')
+EOFError: EOF when reading a line
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> repl(m)
+>Hi
+s
+>His
+ 
+>bo
+d
+>bod
+y
+>
+Goodbye!
+>>> import argparse
+>>> help(argparse)
+Help on module argparse:
+
+NAME
+    argparse - Command-line parsing library
+
+MODULE REFERENCE
+    https://docs.python.org/3.6/library/argparse
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    This module is an optparse-inspired command-line parsing library that:
+    
+        - handles both optional and positional arguments
+        - produces highly informative usage messages
+        - supports parsers that dispatch to sub-parsers
+    
+    The following is a simple usage example that sums integers from the
+    command-line and writes the result to a file::
+    
+        parser = argparse.ArgumentParser(
+            description='sum the integers at the command line')
+        parser.add_argument(
+            'integers', metavar='int', nargs='+', type=int,
+            help='an integer to be summed')
+        parser.add_argument(
+            '--log', default=sys.stdout, type=argparse.FileType('w'),
+            help='the file where the sum should be written')
+        args = parser.parse_args()
+        args.log.write('%s' % sum(args.integers))
+        args.log.close()
+    
+    The module contains the following public classes:
+    
+        - ArgumentParser -- The main entry point for command-line parsing. As the
+            example above shows, the add_argument() method is used to populate
+            the parser with actions for optional and positional arguments. Then
+            the parse_args() method is invoked to convert the args at the
+            command-line into an object with attributes.
+    
+        - ArgumentError -- The exception raised by ArgumentParser objects when
+            there are errors with the parser's actions. Errors raised while
+            parsing the command-line are caught by ArgumentParser and emitted
+            as command-line messages.
+    
+        - FileType -- A factory for defining types of files to be created. As the
+            example above shows, instances of FileType are typically passed as
+            the type= argument of add_argument() calls.
+    
+        - Action -- The base class for parser actions. Typically actions are
+            selected by passing strings like 'store_true' or 'append_const' to
+            the action= argument of add_argument(). However, for greater
+            customization of ArgumentParser actions, subclasses of Action may
+            be defined and passed as the action= argument.
+    
+        - HelpFormatter, RawDescriptionHelpFormatter, RawTextHelpFormatter,
+            ArgumentDefaultsHelpFormatter -- Formatter classes which
+            may be passed as the formatter_class= argument to the
+            ArgumentParser constructor. HelpFormatter is the default,
+            RawDescriptionHelpFormatter and RawTextHelpFormatter tell the parser
+            not to change the formatting for help text, and
+            ArgumentDefaultsHelpFormatter adds information about argument defaults
+            to the help.
+    
+    All other classes in this module are considered implementation details.
+    (Also note that HelpFormatter and RawDescriptionHelpFormatter are only
+    considered public as object names -- the API of the formatter objects is
+    still considered an implementation detail.)
+
+CLASSES
+    _ActionsContainer(builtins.object)
+        ArgumentParser(_AttributeHolder, _ActionsContainer)
+    _AttributeHolder(builtins.object)
+        Action
+        ArgumentParser(_AttributeHolder, _ActionsContainer)
+        Namespace
+    builtins.Exception(builtins.BaseException)
+        ArgumentError
+        ArgumentTypeError
+    builtins.object
+        FileType
+        HelpFormatter
+            ArgumentDefaultsHelpFormatter
+            MetavarTypeHelpFormatter
+            RawDescriptionHelpFormatter
+                RawTextHelpFormatter
+    
+    class Action(_AttributeHolder)
+     |  Information about how to convert command line strings to Python objects.
+     |  
+     |  Action objects are used by an ArgumentParser to represent the information
+     |  needed to parse a single argument from one or more strings from the
+     |  command line. The keyword arguments to the Action constructor are also
+     |  all attributes of Action instances.
+     |  
+     |  Keyword Arguments:
+     |  
+     |      - option_strings -- A list of command-line option strings which
+     |          should be associated with this action.
+     |  
+     |      - dest -- The name of the attribute to hold the created object(s)
+     |  
+     |      - nargs -- The number of command-line arguments that should be
+     |          consumed. By default, one argument will be consumed and a single
+     |          value will be produced.  Other values include:
+     |              - N (an integer) consumes N arguments (and produces a list)
+     |              - '?' consumes zero or one arguments
+     |              - '*' consumes zero or more arguments (and produces a list)
+     |              - '+' consumes one or more arguments (and produces a list)
+     |          Note that the difference between the default and nargs=1 is that
+     |          with the default, a single value will be produced, while with
+     |          nargs=1, a list containing a single value will be produced.
+     |  
+     |      - const -- The value to be produced if the option is specified and the
+     |          option uses an action that takes no values.
+     |  
+     |      - default -- The value to be produced if the option is not specified.
+     |  
+     |      - type -- A callable that accepts a single string argument, and
+     |          returns the converted value.  The standard Python types str, int,
+     |          float, and complex are useful examples of such callables.  If None,
+     |          str is used.
+     |  
+     |      - choices -- A container of values that should be allowed. If not None,
+     |          after a command-line argument has been converted to the appropriate
+     |          type, an exception will be raised if it is not a member of this
+     |          collection.
+     |  
+     |      - required -- True if the action must always be specified at the
+     |          command line. This is only meaningful for optional command-line
+     |          arguments.
+     |  
+     |      - help -- The help string describing the argument.
+     |  
+     |      - metavar -- The name to be used for the option's argument with the
+     |          help string. If None, the 'dest' value will be used as the name.
+     |  
+     |  Method resolution order:
+     |      Action
+     |      _AttributeHolder
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __call__(self, parser, namespace, values, option_string=None)
+     |      Call self as a function.
+     |  
+     |  __init__(self, option_strings, dest, nargs=None, const=None, default=None, type=None, choices=None, required=False, help=None, metavar=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from _AttributeHolder:
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from _AttributeHolder:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class ArgumentDefaultsHelpFormatter(HelpFormatter)
+     |  Help message formatter which adds default values to argument help.
+     |  
+     |  Only the name of this class is considered a public API. All the methods
+     |  provided by the class are considered an implementation detail.
+     |  
+     |  Method resolution order:
+     |      ArgumentDefaultsHelpFormatter
+     |      HelpFormatter
+     |      builtins.object
+     |  
+     |  Methods inherited from HelpFormatter:
+     |  
+     |  __init__(self, prog, indent_increment=2, max_help_position=24, width=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_argument(self, action)
+     |  
+     |  add_arguments(self, actions)
+     |  
+     |  add_text(self, text)
+     |  
+     |  add_usage(self, usage, actions, groups, prefix=None)
+     |  
+     |  end_section(self)
+     |  
+     |  format_help(self)
+     |      # =======================
+     |      # Help-formatting methods
+     |      # =======================
+     |  
+     |  start_section(self, heading)
+     |      # ========================
+     |      # Message building methods
+     |      # ========================
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from HelpFormatter:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class ArgumentError(builtins.Exception)
+     |  An error from creating or using an argument (optional or positional).
+     |  
+     |  The string value of this exception is the message, augmented with
+     |  information about the argument that caused it.
+     |  
+     |  Method resolution order:
+     |      ArgumentError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, argument, message)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __str__(self)
+     |      Return str(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.Exception:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __reduce__(...)
+     |      helper for pickle
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+    
+    class ArgumentParser(_AttributeHolder, _ActionsContainer)
+     |  Object for parsing command line strings into Python objects.
+     |  
+     |  Keyword Arguments:
+     |      - prog -- The name of the program (default: sys.argv[0])
+     |      - usage -- A usage message (default: auto-generated from arguments)
+     |      - description -- A description of what the program does
+     |      - epilog -- Text following the argument descriptions
+     |      - parents -- Parsers whose arguments should be copied into this one
+     |      - formatter_class -- HelpFormatter class for printing help messages
+     |      - prefix_chars -- Characters that prefix optional arguments
+     |      - fromfile_prefix_chars -- Characters that prefix files containing
+     |          additional arguments
+     |      - argument_default -- The default value for all arguments
+     |      - conflict_handler -- String indicating how to handle conflicts
+     |      - add_help -- Add a -h/-help option
+     |      - allow_abbrev -- Allow long options to be abbreviated unambiguously
+     |  
+     |  Method resolution order:
+     |      ArgumentParser
+     |      _AttributeHolder
+     |      _ActionsContainer
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, prog=None, usage=None, description=None, epilog=None, parents=[], formatter_class=<class 'argparse.HelpFormatter'>, prefix_chars='-', fromfile_prefix_chars=None, argument_default=None, conflict_handler='error', add_help=True, allow_abbrev=True)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_subparsers(self, **kwargs)
+     |      # ==================================
+     |      # Optional/Positional adding methods
+     |      # ==================================
+     |  
+     |  convert_arg_line_to_args(self, arg_line)
+     |  
+     |  error(self, message)
+     |      error(message: string)
+     |      
+     |      Prints a usage message incorporating the message to stderr and
+     |      exits.
+     |      
+     |      If you override this in a subclass, it should not return -- it
+     |      should either exit or raise an exception.
+     |  
+     |  exit(self, status=0, message=None)
+     |      # ===============
+     |      # Exiting methods
+     |      # ===============
+     |  
+     |  format_help(self)
+     |  
+     |  format_usage(self)
+     |      # =======================
+     |      # Help-formatting methods
+     |      # =======================
+     |  
+     |  parse_args(self, args=None, namespace=None)
+     |      # =====================================
+     |      # Command line argument parsing methods
+     |      # =====================================
+     |  
+     |  parse_known_args(self, args=None, namespace=None)
+     |  
+     |  print_help(self, file=None)
+     |  
+     |  print_usage(self, file=None)
+     |      # =====================
+     |      # Help-printing methods
+     |      # =====================
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from _AttributeHolder:
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from _AttributeHolder:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from _ActionsContainer:
+     |  
+     |  add_argument(self, *args, **kwargs)
+     |      add_argument(dest, ..., name=value, ...)
+     |      add_argument(option_string, option_string, ..., name=value, ...)
+     |  
+     |  add_argument_group(self, *args, **kwargs)
+     |  
+     |  add_mutually_exclusive_group(self, **kwargs)
+     |  
+     |  get_default(self, dest)
+     |  
+     |  register(self, registry_name, value, object)
+     |      # ====================
+     |      # Registration methods
+     |      # ====================
+     |  
+     |  set_defaults(self, **kwargs)
+     |      # ==================================
+     |      # Namespace default accessor methods
+     |      # ==================================
+    
+    class ArgumentTypeError(builtins.Exception)
+     |  An error from trying to convert a command line string to a type.
+     |  
+     |  Method resolution order:
+     |      ArgumentTypeError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.Exception:
+     |  
+     |  __init__(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __reduce__(...)
+     |      helper for pickle
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  __str__(self, /)
+     |      Return str(self).
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+    
+    class FileType(builtins.object)
+     |  Factory for creating file object types
+     |  
+     |  Instances of FileType are typically passed as type= arguments to the
+     |  ArgumentParser add_argument() method.
+     |  
+     |  Keyword Arguments:
+     |      - mode -- A string indicating how the file is to be opened. Accepts the
+     |          same values as the builtin open() function.
+     |      - bufsize -- The file's desired buffer size. Accepts the same values as
+     |          the builtin open() function.
+     |      - encoding -- The file's encoding. Accepts the same values as the
+     |          builtin open() function.
+     |      - errors -- A string indicating how encoding and decoding errors are to
+     |          be handled. Accepts the same value as the builtin open() function.
+     |  
+     |  Methods defined here:
+     |  
+     |  __call__(self, string)
+     |      Call self as a function.
+     |  
+     |  __init__(self, mode='r', bufsize=-1, encoding=None, errors=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class HelpFormatter(builtins.object)
+     |  Formatter for generating usage messages and argument help strings.
+     |  
+     |  Only the name of this class is considered a public API. All the methods
+     |  provided by the class are considered an implementation detail.
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, prog, indent_increment=2, max_help_position=24, width=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_argument(self, action)
+     |  
+     |  add_arguments(self, actions)
+     |  
+     |  add_text(self, text)
+     |  
+     |  add_usage(self, usage, actions, groups, prefix=None)
+     |  
+     |  end_section(self)
+     |  
+     |  format_help(self)
+     |      # =======================
+     |      # Help-formatting methods
+     |      # =======================
+     |  
+     |  start_section(self, heading)
+     |      # ========================
+     |      # Message building methods
+     |      # ========================
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class MetavarTypeHelpFormatter(HelpFormatter)
+     |  Help message formatter which uses the argument 'type' as the default
+     |  metavar value (instead of the argument 'dest')
+     |  
+     |  Only the name of this class is considered a public API. All the methods
+     |  provided by the class are considered an implementation detail.
+     |  
+     |  Method resolution order:
+     |      MetavarTypeHelpFormatter
+     |      HelpFormatter
+     |      builtins.object
+     |  
+     |  Methods inherited from HelpFormatter:
+     |  
+     |  __init__(self, prog, indent_increment=2, max_help_position=24, width=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_argument(self, action)
+     |  
+     |  add_arguments(self, actions)
+     |  
+     |  add_text(self, text)
+     |  
+     |  add_usage(self, usage, actions, groups, prefix=None)
+     |  
+     |  end_section(self)
+     |  
+     |  format_help(self)
+     |      # =======================
+     |      # Help-formatting methods
+     |      # =======================
+     |  
+     |  start_section(self, heading)
+     |      # ========================
+     |      # Message building methods
+     |      # ========================
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from HelpFormatter:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Namespace(_AttributeHolder)
+     |  Simple object for storing attributes.
+     |  
+     |  Implements equality by attribute names and values, and provides a simple
+     |  string representation.
+     |  
+     |  Method resolution order:
+     |      Namespace
+     |      _AttributeHolder
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __contains__(self, key)
+     |  
+     |  __eq__(self, other)
+     |      Return self==value.
+     |  
+     |  __init__(self, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  __hash__ = None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from _AttributeHolder:
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from _AttributeHolder:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class RawDescriptionHelpFormatter(HelpFormatter)
+     |  Help message formatter which retains any formatting in descriptions.
+     |  
+     |  Only the name of this class is considered a public API. All the methods
+     |  provided by the class are considered an implementation detail.
+     |  
+     |  Method resolution order:
+     |      RawDescriptionHelpFormatter
+     |      HelpFormatter
+     |      builtins.object
+     |  
+     |  Methods inherited from HelpFormatter:
+     |  
+     |  __init__(self, prog, indent_increment=2, max_help_position=24, width=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_argument(self, action)
+     |  
+     |  add_arguments(self, actions)
+     |  
+     |  add_text(self, text)
+     |  
+     |  add_usage(self, usage, actions, groups, prefix=None)
+     |  
+     |  end_section(self)
+     |  
+     |  format_help(self)
+     |      # =======================
+     |      # Help-formatting methods
+     |      # =======================
+     |  
+     |  start_section(self, heading)
+     |      # ========================
+     |      # Message building methods
+     |      # ========================
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from HelpFormatter:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class RawTextHelpFormatter(RawDescriptionHelpFormatter)
+     |  Help message formatter which retains formatting of all help text.
+     |  
+     |  Only the name of this class is considered a public API. All the methods
+     |  provided by the class are considered an implementation detail.
+     |  
+     |  Method resolution order:
+     |      RawTextHelpFormatter
+     |      RawDescriptionHelpFormatter
+     |      HelpFormatter
+     |      builtins.object
+     |  
+     |  Methods inherited from HelpFormatter:
+     |  
+     |  __init__(self, prog, indent_increment=2, max_help_position=24, width=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_argument(self, action)
+     |  
+     |  add_arguments(self, actions)
+     |  
+     |  add_text(self, text)
+     |  
+     |  add_usage(self, usage, actions, groups, prefix=None)
+     |  
+     |  end_section(self)
+     |  
+     |  format_help(self)
+     |      # =======================
+     |      # Help-formatting methods
+     |      # =======================
+     |  
+     |  start_section(self, heading)
+     |      # ========================
+     |      # Message building methods
+     |      # ========================
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from HelpFormatter:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    ONE_OR_MORE = '+'
+    OPTIONAL = '?'
+    PARSER = 'A...'
+    REMAINDER = '...'
+    SUPPRESS = '==SUPPRESS=='
+    ZERO_OR_MORE = '*'
+    __all__ = ['ArgumentParser', 'ArgumentError', 'ArgumentTypeError', 'Fi...
+
+VERSION
+    1.1
+
+FILE
+    /usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/argparse.py
+
+
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 30, in __main__.get_table
+Failed example:
+    get_table('matt')
+Expected:
+    {'m': {'a': 1}, 'a': 't': 1}, 't': {'t': 1}}
+Got:
+    {'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 33, in __main__.get_table
+Failed example:
+    get_table('find a city')
+Expected:
+    {'find': {'a': 1}, 'a': {'city': 1}}
+Got:
+    {'f': {'i': 1}, 'i': {'n': 1, 't': 1}, 'n': {'d': 1}, 'd': {' ': 1}, ' ': {'a': 1, 'c': 1}, 'a': {' ': 1}, 'c': {'i': 1}, 't': {'y': 1}}
+**********************************************************************
+1 items had failures:
+   2 of   2 in __main__.get_table
+***Test Failed*** 2 failures.
+>>> 'find a city'.split()
+['find', 'a', 'city']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 30, in __main__.get_table
+Failed example:
+    get_table('matt')
+Expected:
+    {'m': {'a': 1}, 'a': 't': 1}, 't': {'t': 1}}
+Got:
+    {'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 33, in __main__.get_table
+Failed example:
+    get_table('find a city'.split())
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest __main__.get_table[1]>", line 1, in <module>
+        get_table('find a city'.split())
+      File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 43, in get_table
+        char_dict = results.get(chars, {})
+    TypeError: unhashable type: 'list'
+**********************************************************************
+1 items had failures:
+   2 of   2 in __main__.get_table
+***Test Failed*** 2 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 7, in __main__
+Failed example:
+    m = Markov('ab')  # create an instance
+Expected nothing
+Got:
+    CHARS a
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 11, in __main__
+Failed example:
+    get_table('ab')
+Expected:
+    {'a': {'b': 1}}
+Got:
+    CHARS a
+    {'a': {'b': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 30, in __main__.get_table
+Failed example:
+    get_table('matt')
+Expected:
+    {'m': {'a': 1}, 'a': 't': 1}, 't': {'t': 1}}
+Got:
+    CHARS m
+    CHARS a
+    CHARS t
+    {'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 33, in __main__.get_table
+Failed example:
+    get_table('find a city'.split())
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest __main__.get_table[1]>", line 1, in <module>
+        get_table('find a city'.split())
+      File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 44, in get_table
+        char_dict = results.get(chars, {})
+    TypeError: unhashable type: 'list'
+**********************************************************************
+2 items had failures:
+   2 of   3 in __main__
+   2 of   2 in __main__.get_table
+***Test Failed*** 4 failures.
+>>> get_table('find a city'.split())
+CHARS ['find']
+Traceback (most recent call last):
+  File "<pyshell#169>", line 1, in <module>
+    get_table('find a city'.split())
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 44, in get_table
+    char_dict = results.get(chars, {})
+TypeError: unhashable type: 'list'
+>>> d = {}
+>>> d[['find']] = 1
+Traceback (most recent call last):
+  File "<pyshell#171>", line 1, in <module>
+    d[['find']] = 1
+TypeError: unhashable type: 'list'
+>>> d['find'] = 1
+>>> names = []
+>>> id(name)
+Traceback (most recent call last):
+  File "<pyshell#174>", line 1, in <module>
+    id(name)
+NameError: name 'name' is not defined
+>>> id(names)
+4366056072
+>>> names.append('matt')
+>>> id(names)
+4366056072
+>>> names
+['matt']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 7, in __main__
+Failed example:
+    m = Markov('ab')  # create an instance
+Expected nothing
+Got:
+    CHARS a
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 11, in __main__
+Failed example:
+    get_table('ab')
+Expected:
+    {'a': {'b': 1}}
+Got:
+    CHARS a
+    {'a': {'b': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 30, in __main__.get_table
+Failed example:
+    get_table('matt')
+Expected:
+    {'m': {'a': 1}, 'a': 't': 1}, 't': {'t': 1}}
+Got:
+    CHARS m
+    CHARS a
+    CHARS t
+    {'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 33, in __main__.get_table
+Failed example:
+    get_table('find a city'.split())
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest __main__.get_table[1]>", line 1, in <module>
+        get_table('find a city'.split())
+      File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 46, in get_table
+        char_dict = results.get(chars, {})
+    TypeError: unhashable type: 'list'
+**********************************************************************
+2 items had failures:
+   2 of   3 in __main__
+   2 of   2 in __main__.get_table
+***Test Failed*** 4 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 7, in __main__
+Failed example:
+    m = Markov('ab')  # create an instance
+Expected nothing
+Got:
+    CHARS a
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 11, in __main__
+Failed example:
+    get_table('ab')
+Expected:
+    {'a': {'b': 1}}
+Got:
+    CHARS a
+    {'a': {'b': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 30, in __main__.get_table
+Failed example:
+    get_table('matt')
+Expected:
+    {'m': {'a': 1}, 'a': 't': 1}, 't': {'t': 1}}
+Got:
+    CHARS m
+    CHARS a
+    CHARS t
+    {'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 33, in __main__.get_table
+Failed example:
+    get_table('find a city'.split(), word=True)
+Expected:
+    {'find': {'a': 1}, 'a': {'city': 1}}
+Got:
+    CHARS find
+    CHARS a
+    {'find': {'a': 1}, 'a': {'city': 1}}
+**********************************************************************
+2 items had failures:
+   2 of   3 in __main__
+   2 of   2 in __main__.get_table
+***Test Failed*** 4 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 30, in __main__.get_table
+Failed example:
+    get_table('matt')
+Expected:
+    {'m': {'a': 1}, 'a': 't': 1}, 't': {'t': 1}}
+Got:
+    {'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+**********************************************************************
+1 items had failures:
+   1 of   2 in __main__.get_table
+***Test Failed*** 1 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+>>> wm
+<__main__.WordMarkov object at 0x11144b1d0>
+>>> wm.tables[-1]
+{'findacity,find': {'yourself': 1}}
+>>> wm.tables[0]
+{'find': {'a': 1, 'yourself': 1}, 'a': {'city,': 1}, 'city,': {'find': 1}}
+>>> wm.tables[1]
+{'finda': {'city,': 1}, 'acity,': {'find': 1}, 'city,find': {'yourself': 1}}
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+>>> wm.tables[1]
+{'find a': {'city,': 1}, 'a city,': {'find': 1}, 'city, find': {'yourself': 1}}
+>>> wm.predict('find')
+Traceback (most recent call last):
+  File "<pyshell#184>", line 1, in <module>
+    wm.predict('find')
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 86, in predict
+    raise KeyError('{} is missing'.format(data_in))
+KeyError: 'find is missing'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.088s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+>>> wm
+<__main__.WordMarkov object at 0x10c4f6128>
+>>> wm.tables[1]
+{'find a': {'city,': 1}, 'a city,': {'find': 1}, 'city, find': {'yourself': 1}}
+>>> wm.predict('find a')
+','
+>>> wm.predict('find a')
+'i'
+>>> wm.predict('find a')
+'t'
+>>> wm.predict('find a')
+'i'
+>>> wm.predict('find a')
+'t'
+>>> wm.predict('find a')
+','
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+>>> wm.predict('find a')
+'city,'
+>>> wm.predict('find a')
+'city,'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.087s
+
+OK
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+['/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py']
+>>> wm
+<__main__.WordMarkov object at 0x1061e65c0>
+>>> wm.tables[0]
+{'find': {'a': 1, 'yourself': 1}, 'a': {'city,': 1}, 'city,': {'find': 1}}
+>>> 

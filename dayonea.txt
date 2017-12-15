@@ -1,0 +1,570 @@
+Python 3.6.0 (default, Dec 24 2016, 08:01:42) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.42.1)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> WARNING: The version of Tcl/Tk (8.5.9) in use may be unstable.
+Visit http://www.python.org/download/mac/tcltk/ for current information.
+
+>>> 2 + 3
+5
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()  # list namespace, or the attributes of an object
+['__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'name']
+>>> name
+'Matt'
+>>> type(name)
+<class 'str'>
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder']
+>>> adder
+<function adder at 0x10e6816a8>
+>>> Markov
+<class '__main__.Markov'>
+>>> adder(2, 5)
+7
+>>> m = Markov()
+>>> m = Markov('ab')
+Traceback (most recent call last):
+  File "<pyshell#11>", line 1, in <module>
+    m = Markov('ab')
+TypeError: object() takes no parameters
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder', 'm']
+>>> m
+<__main__.Markov object at 0x108ef9320>
+>>> id(m)
+4444885792
+>>> hex(id(m))
+'0x108ef9320'
+>>> dir(m)
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'data', 'predict']
+>>> m.__class__
+<class '__main__.Markov'>
+>>> Markov
+<class '__main__.Markov'>
+>>> m.data
+'ab'
+>>> m.predict
+<bound method Markov.predict of <__main__.Markov object at 0x108ef9320>>
+>>> m.predict('a')
+Traceback (most recent call last):
+  File "<pyshell#21>", line 1, in <module>
+    m.predict('a')
+TypeError: predict() takes 0 positional arguments but 2 were given
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> m.predict('a')
+'b'
+>>> x = 2
+>>> name = 'matt'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> Markov.language
+'English'
+>>> m.language
+'English'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder', 'm']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder', 'm']
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> help(adder)
+Help on function adder in module __main__:
+
+adder(x, y)
+    Returns x + y
+
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> help(Markov)
+Help on class Markov in module __main__:
+
+class Markov(builtins.object)
+ |  Defines a Markov class
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, txt)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  predict(self, data_in)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  language = 'English'
+
+>>> Markov.language
+'English'
+>>> m.language
+'English'
+>>> m.data
+'ab'
+>>> Markov.data
+Traceback (most recent call last):
+  File "<pyshell#34>", line 1, in <module>
+    Markov.data
+AttributeError: type object 'Markov' has no attribute 'data'
+>>> a = Markov("foo")
+>>> a.language = 'Spanish'
+>>> a.language
+'Spanish'
+>>> Markov.language
+'English'
+>>> Markov.implementor = "matt"
+>>> a.implementor
+'matt'
+>>> # dictionaries
+>>> # words -> definitions
+>>> # key -> value
+>>> 
+>>> colors = {}
+>>> colors['apple'] = 'red'
+>>> color['pumpkin'] = 'orange'
+Traceback (most recent call last):
+  File "<pyshell#47>", line 1, in <module>
+    color['pumpkin'] = 'orange'
+NameError: name 'color' is not defined
+>>> colors['pumpkin'] = 'orange'
+>>> colors
+{'apple': 'red', 'pumpkin': 'orange'}
+>>> colors.keys()
+dict_keys(['apple', 'pumpkin'])
+>>> colors.items()
+dict_items([('apple', 'red'), ('pumpkin', 'orange')])
+>>> colors.values()
+dict_values(['red', 'orange'])
+>>> colors['apple']
+'red'
+>>> color['blueberry']
+Traceback (most recent call last):
+  File "<pyshell#54>", line 1, in <module>
+    color['blueberry']
+NameError: name 'color' is not defined
+>>> colors['blueberry']
+Traceback (most recent call last):
+  File "<pyshell#55>", line 1, in <module>
+    colors['blueberry']
+KeyError: 'blueberry'
+>>> colors.get('blueberry')
+>>> colors.get('blueberry', 'brown')
+'brown'
+>>> dir(colors)
+['__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'items', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
+>>> help(colors.get)
+Help on built-in function get:
+
+get(...) method of builtins.dict instance
+    D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.
+
+>>> name = 'matt'
+>>> name[0]
+'m'
+>>> name[1]
+'a'
+>>> name[2]
+'t'
+>>> name[3]
+'t'
+>>> name[4]
+Traceback (most recent call last):
+  File "<pyshell#65>", line 1, in <module>
+    name[4]
+IndexError: string index out of range
+>>> for c in name:
+	print(c)
+
+	
+m
+a
+t
+t
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> dir()
+['Markov', '__annotations__', '__builtins__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'adder', 'get_table', 'm']
+>>> get_table('ab')
+{'a': {'b': 2}}
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> get_table('ab')
+{'a': {'b': 0}}
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> get_table('ab')
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(23)get_table()
+-> results = {} # dictionary literal
+(Pdb) h
+
+Documented commands (type help <topic>):
+========================================
+EOF    c          d        h         list      q        rv       undisplay
+a      cl         debug    help      ll        quit     s        unt      
+alias  clear      disable  ignore    longlist  r        source   until    
+args   commands   display  interact  n         restart  step     up       
+b      condition  down     j         next      return   tbreak   w        
+break  cont       enable   jump      p         retval   u        whatis   
+bt     continue   exit     l         pp        run      unalias  where    
+
+Miscellaneous help topics:
+==========================
+exec  pdb
+
+(Pdb) l
+ 18  	    """
+ 19  	    return x + y
+ 20  	
+ 21  	def get_table(line):
+ 22  	    import pdb; pdb.set_trace()
+ 23  ->	    results = {} # dictionary literal
+ 24  	    i = 0
+ 25  	    for c in line:
+ 26  	        char = line[i]
+ 27  	        try:
+ 28  	            out = line[i+1]
+(Pdb) w
+  <string>(1)<module>()
+  /usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/idlelib/run.py(142)main()
+-> ret = method(*args, **kwargs)
+  /usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/idlelib/run.py(460)runcode()
+-> exec(code, self.locals)
+  <pyshell#72>(1)<module>()
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(23)get_table()
+-> results = {} # dictionary literal
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(24)get_table()
+-> i = 0
+(Pdb) l
+ 19  	    return x + y
+ 20  	
+ 21  	def get_table(line):
+ 22  	    import pdb; pdb.set_trace()
+ 23  	    results = {} # dictionary literal
+ 24  ->	    i = 0
+ 25  	    for c in line:
+ 26  	        char = line[i]
+ 27  	        try:
+ 28  	            out = line[i+1]
+ 29  	        except IndexError:
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(25)get_table()
+-> for c in line:
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(26)get_table()
+-> char = line[i]
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(27)get_table()
+-> try:
+(Pdb) l
+ 22  	    import pdb; pdb.set_trace()
+ 23  	    results = {} # dictionary literal
+ 24  	    i = 0
+ 25  	    for c in line:
+ 26  	        char = line[i]
+ 27  ->	        try:
+ 28  	            out = line[i+1]
+ 29  	        except IndexError:
+ 30  	            break
+ 31  	        char_dict = results.get(char, {})
+ 32  	        char_dict.setdefault(out, 0)
+(Pdb) dir()
+['c', 'char', 'i', 'line', 'pdb', 'results']
+(Pdb) print(c)
+a
+(Pdb) line
+'ab'
+(Pdb) p c
+'a'
+(Pdb) print(c)
+a
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(28)get_table()
+-> out = line[i+1]
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(31)get_table()
+-> char_dict = results.get(char, {})
+(Pdb) ls
+*** NameError: name 'ls' is not defined
+(Pdb) l
+ 26  	        char = line[i]
+ 27  	        try:
+ 28  	            out = line[i+1]
+ 29  	        except IndexError:
+ 30  	            break
+ 31  ->	        char_dict = results.get(char, {})
+ 32  	        char_dict.setdefault(out, 0)
+ 33  	        # if out not in char_dict:
+ 34  	        #     char_dict[out] = 0
+ 35  	        char_dict[out] += 1
+ 36  	        results[char] = char_dict
+(Pdb) results
+{}
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(32)get_table()
+-> char_dict.setdefault(out, 0)
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(35)get_table()
+-> char_dict[out] += 1
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(36)get_table()
+-> results[char] = char_dict
+(Pdb) char_dict
+{'b': 1}
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(25)get_table()
+-> for c in line:
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(26)get_table()
+-> char = line[i]
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(27)get_table()
+-> try:
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(28)get_table()
+-> out = line[i+1]
+(Pdb) n
+> /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py(31)get_table()
+-> char_dict = results.get(char, {})
+(Pdb) out
+'b'
+(Pdb) c
+{'a': {'b': 2}}
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> get_table('ab')
+{'a': {'b': 1}}
+>>> get_table("My name is matt")
+{'M': {'y': 1}, 'y': {' ': 1}, ' ': {'n': 1, 'i': 1, 'm': 1}, 'n': {'a': 1}, 'a': {'m': 1, 't': 1}, 'm': {'e': 1, 'a': 1}, 'e': {' ': 1}, 'i': {'s': 1}, 's': {' ': 1}, 't': {'t': 1}}
+>>> x = 5
+>>> y = 7
+>>> tup = (5, 7)
+>>> tup
+(5, 7)
+>>> tup[0]
+5
+>>> tup[1]
+7
+>>> a, b = tup
+>>> # unpacking
+>>> a
+5
+>>> b
+7
+>>> for thing in enumerate('name'):
+	print(thing)
+
+	
+(0, 'n')
+(1, 'a')
+(2, 'm')
+(3, 'e')
+>>> for i, thing in enumerate('name'):
+	print(i, thing)
+
+	
+0 n
+1 a
+2 m
+3 e
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> get_table('matt')
+{'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+>>> empty = {}
+>>> if empty:
+	print("A")
+else:
+	print("B")
+
+	
+B
+>>> name
+Traceback (most recent call last):
+  File "<pyshell#97>", line 1, in <module>
+    name
+NameError: name 'name' is not defined
+>>> name = 'matt'
+>>> greeting = 'hi! '
+>>> greeting + name
+'hi! matt'
+>>> 8 * 2
+16
+>>> 'matt' * 2
+'mattmatt'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> m.predict('a')
+Traceback (most recent call last):
+  File "<pyshell#103>", line 1, in <module>
+    m.predict('a')
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 66, in predict
+    result = random.choice(possible)
+NameError: name 'random' is not defined
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> m.predict('a')
+'b'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 21, in __main__.adder
+Failed example:
+    adder(4, 5)
+Expected:
+    10
+Got:
+    9
+**********************************************************************
+1 items had failures:
+   1 of   1 in __main__.adder
+***Test Failed*** 1 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 28, in __main__.get_table
+Failed example:
+    get_table('matt')
+Expected:
+    {'m': {'a': 1}, 'a': {'t': 2}, 't': {'t': 1}}
+Got:
+    {'m': {'a': 1}, 'a': {'t': 1}, 't': {'t': 1}}
+**********************************************************************
+1 items had failures:
+   1 of   1 in __main__.get_table
+***Test Failed*** 1 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 11, in __main__
+Failed example:
+    get_table('ab')
+Expected:
+    {'a': {'b':1}}
+Got:
+    {'a': {'b': 1}}
+**********************************************************************
+1 items had failures:
+   1 of   3 in __main__
+***Test Failed*** 1 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+**********************************************************************
+File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 21, in __main__.adder
+Failed example:
+    adder(4, 5)
+Expected:
+     9
+Got:
+    9
+**********************************************************************
+1 items had failures:
+   1 of   1 in __main__.adder
+***Test Failed*** 1 failures.
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py", line 78, in <module>
+    doctest.testmod()
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1950, in testmod
+    for test in finder.find(m, name, globs=globs, extraglobs=extraglobs):
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 933, in find
+    self._find(tests, obj, name, module, source_lines, globs, {})
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 996, in _find
+    globs, seen)
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 983, in _find
+    test = self._get_test(obj, name, module, globs, source_lines)
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 1067, in _get_test
+    filename, lineno)
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 669, in get_doctest
+    return DocTest(self.get_examples(string, name), globs,
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 683, in get_examples
+    return [x for x in self.parse(string, name)
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 645, in parse
+    self._parse_example(m, name, lineno)
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 715, in _parse_example
+    lineno + len(source_lines))
+  File "/usr/local/Cellar/python3/3.6.0/Frameworks/Python.framework/Versions/3.6/lib/python3.6/doctest.py", line 801, in _check_prefix
+    (lineno+i+1, name, line))
+ValueError: line 3 of the docstring for __main__.adder has inconsistent leading whitespace: '9'
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/markov.py 
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+
+Warning (from warnings module):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 13
+    self.assertEquals(res, {})
+DeprecationWarning: Please use assertEqual instead.
+F
+======================================================================
+FAIL: test_get_table (__main__.TestMarkov)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py", line 13, in test_get_table
+    self.assertEquals(res, {})
+AssertionError: {'x': {'y': 1}} != {}
+- {'x': {'y': 1}}
++ {}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.041s
+
+FAILED (failures=1)
+>>> 
+ RESTART: /Users/matt/Dropbox/work/training/metasnake/oreilly-python-dec-13-2017/testmarkov.py 
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.032s
+
+OK
+>>> 
